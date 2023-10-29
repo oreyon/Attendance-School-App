@@ -1,31 +1,53 @@
 @startuml Entity Relationship Diagram SMKN3 BJM
 
-Entity Guru {
-  *id_guru
-  *namaguru
-  *nidn
-  *jeniskelamin
-  *alamat
-  *email
-  *notelp
-  *tempatlahir
-  *tanggallahir
+Entity Presensi {
+  *idpresensi
+  *mapelid
+  *jurusanid
+  *bulanid
+  *tahunid
+  *semesterid
+  *kelasid
+  *studentid
+  *date
+  *keterangan
 }
 
 Entity MataPelajaran {
   *idmapel
   *namamapel
   *guruid
+  *kelasid
+  *jurusanid
+  *tahunid
+  *semesterid
 }
 
-Entity Presensi {
-  *idpresensi
-  *mapelid
-  *jurusanid
-  *kelasid
-  *siswaid
-  *date
-  *keterangan
+Entity Semester {
+  *idsemester
+  *namasemester
+}
+
+Entity Tahun {
+  *idtahun
+  *namatahun
+}
+
+Entity Bulan {
+  *idbulan
+  *namabulan
+}
+
+Entity Guru {
+  *id_guru
+  *namaguru
+  *nisn
+  *jeniskelamin
+  *alamat
+  *email
+  *notelp
+  *tempatlahir
+  *tanggallahir
 }
 
 Entity Jurusan {
@@ -35,9 +57,11 @@ Entity Jurusan {
 
 Entity Kelas {
   *idkelas
+  *tingkatkelas
   *namakelas
-  *guruid
+  *tahunangkatan
   *jurusanid
+  *guruid
 }
 
 Entity Siswa {
@@ -51,18 +75,26 @@ Entity Siswa {
   *tanggallahir
 }
 
-Entity Admin {
-  *db_iduser
-  *db_nisn
-  *db_namauser
-  *db_password
+Entity User {
+  *id
+  *email
+  *username
+  *fullname
+  *nisn
+  *user_image
+  *password_hash
 }
 
+User ||--|| Guru :Sebagai
 Guru ||--|{ MataPelajaran : Mengajar
 MataPelajaran ||--|{ Presensi :Manghasilkan
 MataPelajaran ||--|{ Kelas :Memiliki
 Kelas ||--|{ Siswa :Memiliki
 Kelas ||--|| Jurusan :Memiliki
 Siswa ||--|| Jurusan :Memiliki
+Siswa }|--|{ Presensi :Menghasilkan
+MataPelajaran ||--|| Semester :Memiliki
+MataPelajaran ||--|{ Tahun :Memiliki
+MataPelajaran ||--|{ Bulan :Memiliki
 
 @enduml
