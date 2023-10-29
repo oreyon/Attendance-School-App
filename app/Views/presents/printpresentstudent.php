@@ -31,7 +31,7 @@
                     <td align="left"><strong>GURU PENGAJAR:</strong> <?= $mapels['db_namaguru']; ?></td>
                 </tr>
                 <tr>
-                    <td align="left"><strong>TANGGAL:</strong> <?= date('d-n-Y'); ?></td>
+                    <!-- <td align="left"><strong>TANGGAL:</strong> <?= date('d-n-Y'); ?></td> -->
                 </tr>
             </table>
             <table border="1" class="isi" width="100%">
