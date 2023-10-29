@@ -1,0 +1,46 @@
+@startuml testdiagram
+
+class BaseController {
+    << (C,orchid) Abstract Class >>
+}
+
+class TbStudentsModel {
+}
+
+class JurusanModel {
+}
+
+class ClassModel {
+}
+
+class MapelsModel {
+}
+
+class PresentsModel {
+}
+
+class Presents {
+    - TbstudentsModel
+    - JurusanModel
+    - ClassModel
+    - MapelsModel
+    - PresentsModel
+
+    + __construct()
+    + index()
+    + detail(idmapel)
+    + detailstudentpresents(idmapel, idstudent)
+    + createpresents(idmapel)
+    + savepresents()
+    + printpresent(idmapel)
+    + printpresentstudent(idmapel, idstudent)
+}
+
+BaseController <|-- Presents
+Presents --> TbStudentsModel
+Presents --> JurusanModel
+Presents --> ClassModel
+Presents --> MapelsModel
+Presents --> PresentsModel
+
+@enduml

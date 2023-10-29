@@ -1,0 +1,212 @@
+@startuml Class Diagram Presents Application SMKN 3 BJM
+
+class Admin {
+ - db
+ - builder
+
+ + __construct()
+ + index()
+ + detail(id)
+}
+
+class Classes {
+  - TeachersModel
+  - TbStudentsModel
+  - classModel
+  - db
+
+  + __construct()
+  + index()
+  + create()
+  + save()
+}
+
+Class Home {
+ + index()
+ + register()
+ + user()
+}
+
+class Mapels {
+ + index()
+}
+
+class Pages {
+  + index()
+  + about()
+  + presensi()
+  + guru()
+  + kelas()
+  + siswa()
+}
+
+class Presents {
+  - TbstudentsModel
+  - JurusanModel
+  - ClassModel
+  - MapelsModel
+  - PresentsModel
+
+  + __construct()
+  + index()
+  + detail(idmapel)
+  + detailstudentpresents(idmapel, idstudent)
+  + createpresents(idmapel)
+  + savepresents()
+  + printpresent(idmapel)
+  + printpresentstudent(idmapel, idstudent)
+}
+
+class Students {
+ - TbstudentsModel
+ - JurusanModel
+ - ClassModel
+ - validation
+
+ + __construct()
+ + index()
+ + detail(slug)
+ + create()
+ + save()
+ + delete(id)
+ + edit(slug)
+ + update(id)
+}
+
+class Teachers {
+  - TeachersModel
+  - TbStudentsModel
+
+  + __construct()
+  + index()
+  + detail(idguru)
+
+}
+
+class ClassModels {
+  - table
+  - primaryKey
+  - useAutoIncrement
+  - returnType
+  - useSoftDeletes
+  - allowedFields
+  - useTimestamps
+  - dateFormat
+  - createdField
+  - updatedField
+  - deletedField
+
+  + getClass(idkelas)
+  + getDataClass()
+  + getDataClassSortByKelas()
+  + getDataClassOnlyShowByKelas()
+  + getDataClassOnlyShowByKelasXI()
+  + getDataClassOnlyShowByKelasXII()
+}
+
+class JurusanModel {
+  - table
+  - primaryKey
+  - useAutoIncrement
+  - returnType
+  - useSoftDeletes
+  - allowedFields
+  - useTimestamps
+  - dateFormat
+  - createdField
+  - updatedField
+  - deletedField
+
+  + getDataJurusan()
+}
+
+class MapelsModel {
+  - table
+  - primaryKey
+  - useAutoIncrement
+  - returnType
+  - useSoftDeletes
+  - allowedFields
+  - useTimestamps
+  - dateFormat
+  - createdField
+  - updatedField
+  - deletedField
+
+  + getMapels(idmapel)
+}
+
+class PresentsModel {
+  - table
+  - primaryKey
+  - useAutoIncrement
+  - returnType
+  - useSoftDeletes
+  - allowedFields
+  - useTimestamps
+  - dateFormat
+  - createdField
+  - updatedField
+  - deletedField
+
+  + getPresentsByMapels(idmatapelajaran)
+  + getPresentsStudentById(idmapel, idstudent)
+  + getPresents()
+}
+
+class TbStudentsModel {
+  - table
+  - primaryKey
+  - useAutoIncrement
+  - returnType
+  - useSoftDeletes
+  - allowedFields
+  - useTimestamps
+  - dateFormat
+  - createdField
+  - updatedField
+  - deletedField
+
+  + getStudents(slug)
+  + getStudentById(id)
+  + getDataStudents()
+  + getDataStudentsSortByKelas()
+  + getDataStudentsOnlyShowByJurusan()
+  + getDataStudentsOnlyShowByClass()
+  + getDataStudentsByClassByJurusan()
+}
+
+class TeachersModel {
+  - table
+  - primaryKey
+  - useAutoIncrement
+  - returnType
+  - useSoftDeletes
+  - allowedFields
+  - useTimestamps
+  - dateFormat
+  - createdField
+  - updatedField
+  - deletedField
+  
+  + getTeachers(idguru)
+}
+
+Presents --> TbStudentsModel
+Presents --> JurusanModel
+Presents --> ClassModels
+Presents --> MapelsModel
+Presents --> PresentsModel
+
+Classes --> TeachersModel
+Classes --> TbStudentsModel
+Classes --> ClassModels
+
+Students --> TbStudentsModel
+Students --> JurusanModel
+Students --> ClassModels
+
+Teachers --> TeachersModel
+Teachers --> TbStudentsModel
+
+@enduml
