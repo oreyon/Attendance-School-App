@@ -15,9 +15,9 @@
                 <h1>Selamat Datang <?= user()->username; ?></h1>
                 <h2>Sekarang Hari <?= $formattedDate; ?></h2>
                 
-                <h2>
+                <!-- <h2>
                     Framework yang digunakan yaitu Codeigniter <?= \Codeigniter\Codeigniter::CI_VERSION; ?>
-                </h2>
+                </h2> -->
             </div>
         </div>
     </div>
