@@ -1,0 +1,68 @@
+@startuml Entity Relationship Diagram SMKN3 BJM
+
+Entity Guru {
+  *id_guru
+  *namaguru
+  *nidn
+  *jeniskelamin
+  *alamat
+  *email
+  *notelp
+  *tempatlahir
+  *tanggallahir
+}
+
+Entity MataPelajaran {
+  *idmapel
+  *namamapel
+  *guruid
+}
+
+Entity Presensi {
+  *idpresensi
+  *mapelid
+  *jurusanid
+  *kelasid
+  *siswaid
+  *date
+  *keterangan
+}
+
+Entity Jurusan {
+  *idjurusan
+  *namajurusan
+}
+
+Entity Kelas {
+  *idkelas
+  *namakelas
+  *guruid
+  *jurusanid
+}
+
+Entity Siswa {
+  *idsiswa
+  *namasiswa
+  *jeniskelamin
+  *alamat
+  *email
+  *notelp
+  *tempatlahir
+  *tanggallahir
+}
+
+Entity Admin {
+  *db_iduser
+  *db_nisn
+  *db_namauser
+  *db_password
+}
+
+Guru ||--|{ MataPelajaran : Mengajar
+MataPelajaran ||--|{ Presensi :Manghasilkan
+MataPelajaran ||--|{ Kelas :Memiliki
+Kelas ||--|{ Siswa :Memiliki
+Kelas ||--|| Jurusan :Memiliki
+Siswa ||--|| Jurusan :Memiliki
+
+@enduml
