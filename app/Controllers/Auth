@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+use App\Models\UsersModel;
+use App\Models\TeachersModel;
+
+class Auth extends BaseController
+{
+    protected $usersModel;
+    protected $teachersModel;
+
+    public function __construct()
+    {
+        $this->usersModel = new UsersModel();
+        $this->teachersModel = new TeachersModel();
+    }
+    public function index()
+    {
+        //
+        $data =
+        [
+            'title' => 'Home | SMKN 3 BJM',
+            'tes' => ['satu','dua','tiga'],
+            'config' => config('Auth'),
+        ];
+
+
+        return redirect()->to(site_url('login'));
+        // return view('auth/login',$data);
+    }
+
+    public function login()
+    {
+        $data =
+        [
+            'title' => 'Home | SMKN 3 BJM',
+            'tes' => ['satu','dua','tiga'],
+            'config' => config('Auth'),
+        ];
+        return view('auth/login',$data);
+    }
+
+    public function loginProcess()
+    {
+        $post = $this->request->getPost();
+        $query = $this->teachersModel->table('tb_guru')->getWhere(['db_namauser' => $post['username']]);
+
+        $user = $query->getRow();
+        if($user) {
+            if(password_verify($post['password'], $user->db_password)){
+                $params = ['db_idguru' => $user->db_idguru];
+                session()->set($params);
+                return redirect()->to(site_url('/pages/index'));
+            } else {
+                return redirect()->back()->with('error', 'Password salah');
+            }
+        } 
+        else
+        {
+            return redirect()->back()->with('error', 'Email tidak ditemukan');
+        }
+        // return redirect()->to(site_url('login'))->with('success', 'Data berhasil Masuk');
+    }
+}
