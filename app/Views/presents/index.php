@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col">
                 <h1 class="mt-2 text-center">Presensi Kehadiran</h1>
-                <button onclick="window.print()" class="btn btn-outline-secondary shadow my-2">Print <i class="fa fa-print"></i></button>
+                <!-- <button onclick="window.print()" class="btn btn-outline-secondary shadow my-2">Print <i class="fa fa-print"></i></button> -->
                 <?php if (session()->getFlashdata('pesan')) : ?>
                             <div class="alert alert-success" role="alert">
                                 <?= session()->getFlashdata('pesan'); ?>
