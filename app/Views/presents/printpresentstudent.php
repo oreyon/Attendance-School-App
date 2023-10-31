@@ -5,7 +5,7 @@
         <div class="col">
             <table class="cetakhead" width="100%">
                 <tr>
-                    <td align="center"><h2 class="text-center">DETAIL PRESENSI</h2></td>
+                    <td align="center"><h2 class="text-center">DETAIL PRESENSI SISWA</h2></td>
                 </tr>
             </table>
             
